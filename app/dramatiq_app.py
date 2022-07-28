@@ -12,15 +12,4 @@ r_backend = RedisBackend(encoder=PickleEncoder())
 r_broker.add_middleware(Results(backend=r_backend))
 
 dramatiq.set_broker(r_broker)
-
-
-class NumpyArrayEncoder(JSONEncoder):
-    def encode(self, data: MessageData) -> bytes:
-        if isinstance(data["kwargs"]["nd_data"], np.ndarray):
-            print("data is numpy")
-            data["kwargs"]["nd_data"] = data["kwargs"]["nd_data"].tolist()
-
-        return super().encode(data)
-
-
-dramatiq.set_encoder(NumpyArrayEncoder())
+dramatiq.set_encoder(JSONEncoder())

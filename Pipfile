@@ -8,6 +8,8 @@ dramatiq = {extras = ["redis", "watch"], version = "*"}
 safety = "*"
 datasets = {extras = ["vision"], version = "*"}
 pandas = "*"
+numpy = "*"
+matplotlib = "*"
 
 [dev-packages]
 
